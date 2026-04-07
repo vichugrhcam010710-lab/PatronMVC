@@ -1,10 +1,5 @@
 <?php
-/**
- * Generador de Nombres Aleatorios Únicos
- * Desarrollado para entorno local (XAMPP)
- */
 
-// 1. Definición de 100 nombres
 $nombresBase = [
     'Hugo', 'Sofía', 'Mateo', 'Valentina', 'Santiago', 'Isabella', 'Sebastián', 'Camila', 'Leonardo', 'Lucía',
     'Felipe', 'Mariana', 'Daniel', 'Gabriela', 'Diego', 'Victoria', 'Samuel', 'Martina', 'Joaquín', 'Ximena',
@@ -18,7 +13,6 @@ $nombresBase = [
     'Rodrigo', 'Bianca', 'Marcos', 'Abigaíl', 'Pascual', 'Estela', 'Arturo', 'Noemí', 'Saúl', 'Rebeca'
 ];
 
-// 2. Definición de 100 apellidos
 $apellidosBase = [
     'García', 'Rodríguez', 'González', 'Fernández', 'López', 'Martínez', 'Sánchez', 'Pérez', 'Gómez', 'Martin',
     'Jiménez', 'Ruiz', 'Hernández', 'Diaz', 'Moreno', 'Muñoz', 'Álvarez', 'Romero', 'Alonso', 'Gutiérrez',
@@ -32,8 +26,7 @@ $apellidosBase = [
     'Pardo', 'Merino', 'Franco', 'Espinosa', 'Izquierdo', 'Lara', 'Rivas', 'Silva', 'Rivera', 'Ríos'
 ];
 
-// 3. Simulación de la Ruta GET /nombres
-// Obtenemos la URL actual para ver si termina en /nombres o si se pasa por parámetro
+
 $requestUri = $_SERVER['REQUEST_URI'];
 
 if (strpos($requestUri, '/nombres') !== false) {
@@ -54,12 +47,10 @@ if (strpos($requestUri, '/nombres') !== false) {
         $nombresCompletos[$nombreGenerado] = $nombreGenerado;
     }
 
-    // Formatear la respuesta como JSON
     header('Content-Type: application/json');
     echo json_encode(array_values($nombresCompletos), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
     exit;
 } else {
-    // Si entras a index.php sin el /nombres al final
     echo "<h1>Bienvenido al sistema de nombres</h1>";
     echo "<p>Para ver los nombres, añade <b>/nombres</b> al final de la URL en tu navegador.</p>";
 }
